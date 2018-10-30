@@ -11,6 +11,14 @@ pipeline {
         echo "${TEST_USER_PSW}"
       }
     }
+    stage('Deploy') {
+      input {
+        message 'Should we continue?'
+      }
+      steps {
+        echo 'Continuing deployment'
+      }
+    }
   }
   environment {
     nameID = 'Arun'
