@@ -1,3 +1,30 @@
+
+Skip to content
+
+    Pull requests
+    Issues
+    Marketplace
+    Explore
+
+    @arzvi
+
+1
+0
+
+    0
+
+arzvi/jenkinstest
+Code
+Issues 0
+Pull requests 0
+Projects 0
+Wiki
+Insights
+Settings
+jenkinstest/Jenkinsfile
+5f24479 a minute ago
+@arzvi arzvi Update Jenkinsfile
+39 lines (38 sloc) 817 Bytes
 pipeline {
   agent {
     label 'jdk8'
@@ -18,7 +45,7 @@ pipeline {
       input {
         message "Which version?"
         ok "Deploy"
-        paramters{
+        parameters{
           choice(name: 'APP_VERSION', choices:"v1\nv2\nv3", description: 'What to deploy?')
         }
       }
