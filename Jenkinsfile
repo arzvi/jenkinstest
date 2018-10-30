@@ -11,22 +11,23 @@ pipeline {
         echo "${TEST_USER_PSW}"
       }
     }
-    stage('Deploy') {
-      options {
-        timeout(time: 30, unit: 'SECONDS')
-      }
-      input {
-        message 'Which version?'
-        id 'Deploy'
-        parameters {
-          choice(name: 'APP_VERSION', choices: '''v1
-v2
-v3''', description: 'What to deploy?')
+    stage('Get Kernel'){
+      steps{
+        script{
+          try{
+            KERNEL_VERSION= sh(script: 'uname -r', returnStdout: true)
+          }
+          catch(err){
+            echo "Caught error: ${err}"
+            throw err
+          }
         }
       }
-      steps {
-        echo "Deploying ${APP_VERSION}"
+    stage('Say Kernel'){
+      steps{
+        echo "{KERNEL_VERSION}"
       }
+    }
     }
   }
   environment {
