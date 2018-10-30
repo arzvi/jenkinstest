@@ -1,9 +1,8 @@
 pipeline {
-  agent {
-    label 'jdk8'
-  }
+  agent none
   stages {
     stage('Say Hello') {
+      agent any
       steps {
         echo "Hello ${params.Name}!"
         sh 'java -version'
@@ -22,7 +21,7 @@ pipeline {
         }
         }
         stage('Java 9'){
-          agent none
+          agent { label 'jdk9' }
           steps{
             sh 'java -version'
             sleep time:20, unit: 'SECONDS' 
