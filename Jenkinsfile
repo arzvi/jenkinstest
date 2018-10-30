@@ -30,6 +30,18 @@ pipeline {
         }
       }
     }
+    stage('checkpoint'){
+      agent none
+      steps{
+        checkpoint 'Checkpoint'
+      }
+    }
+    stage('Deploy'){
+      agent none
+      steps{
+        echo 'Deploying'
+      }
+    }
     stage('Get Kernel'){
       steps{
         script{
