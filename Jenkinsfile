@@ -20,13 +20,7 @@ pipeline {
           sleep time:10, unit: 'SECONDS'
         }
         }
-        stage('Java 9'){
-          agent none
-          steps{
-            sh 'java -version'
-            sleep time:20, unit: 'SECONDS' 
-          }
-        }
+        
       }
     }
     stage('checkpoint'){
