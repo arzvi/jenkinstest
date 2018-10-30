@@ -22,7 +22,7 @@ pipeline {
         }
         }
         stage('Java 9'){
-          agent none
+          agent{ label 'jdk9' }
           steps{
             sh 'java -version'
             sleep time:20, unit: 'SECONDS' 
@@ -31,8 +31,8 @@ pipeline {
       }
     }
     stage('checkpoint'){
-      agent none
       steps{
+        node(''){ echo 'Building' }
         checkpoint 'Checkpoint'
       }
     }
