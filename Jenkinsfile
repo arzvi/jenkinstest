@@ -15,7 +15,7 @@ pipeline {
       steps{
         script{
           try{
-            KERNEL_VERSION= sh(script: 'uname -r', returnStdout: true)
+            USER_NAME= sh(script: 'whoami', returnStdout: true)
           }
           catch(err){
             echo "Caught error: ${err}"
@@ -26,7 +26,7 @@ pipeline {
     }
     stage('Say Kernel'){
       steps{
-        echo "${KERNEL_VERSION}"
+        echo "${USER_NAME}"
       }
     }
   }
