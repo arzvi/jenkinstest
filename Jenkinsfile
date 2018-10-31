@@ -6,7 +6,11 @@ pipeline {
     stage('outer') {
       steps {
         echo 'outside'
-        sh 'printenv'
+        sh '''echo "AN_ACCESS_KEY_USR" > /tmp/mine
+
+
+'''
+        sh 'cat /tmp/mine'
       }
     }
     stage('Mine') {
