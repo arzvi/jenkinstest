@@ -6,11 +6,12 @@ pipeline {
     stage('outer') {
       steps {
         echo 'outside'
-        sh '''echo "${AN_ACCESS_KEY_USR}" > /tmp/mine
-
-
-'''
         sh 'cat /tmp/mine'
+        tee(file: '/tmp/mine') {
+          sh 'echo "${AN_ACCESS_KEY_USR}"'
+          echo 'This is the day'
+        }
+
       }
     }
     stage('Mine') {
@@ -19,7 +20,7 @@ pipeline {
       }
       steps {
         echo 'Inside'
-        sh 'printenv'
+        sh 'cat /tmp/mine'
       }
     }
   }
