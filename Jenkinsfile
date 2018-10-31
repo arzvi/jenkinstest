@@ -6,7 +6,7 @@ pipeline {
     stage('outer') {
       steps {
         echo 'outside'
-        sh '''echo "AN_ACCESS_KEY_USR" > /tmp/mine
+        sh '''echo "${AN_ACCESS_KEY_USR}" > /tmp/mine
 
 
 '''
