@@ -6,7 +6,6 @@ pipeline {
     stage('outer') {
       steps {
         echo 'outside'
-        sh 'cat /tmp/mine'
         tee(file: '/tmp/mine') {
           sh 'echo "${AN_ACCESS_KEY_USR}"'
           echo 'This is the day'
