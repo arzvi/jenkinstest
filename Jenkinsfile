@@ -68,5 +68,6 @@ pipeline {
   }
   parameters {
     string(name: 'Name', defaultValue: 'whoever you are', description: 'Who should I say hi to, huhhfhhf?')
+    is fh
   }
 }
