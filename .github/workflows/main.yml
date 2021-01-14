@@ -22,14 +22,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: run check
-	id: findArun
         run: |
           a=`head -1 $GITHUB_WORKSPACE/Jenkinsfile | grep arun | wc -l`
           if [ $a -ne 1 ]; then echo "not found"; else echo "found"; fi
+	id: find_arun
       - name: error code
-	if: contains(steps.findArun.outputs, 'not')
+	if: contains(steps.find_arun.outputs, 'not')
 	run: exit 1
 
       - name: error code positive
-	if: contains(steps.findArun.outputs, 'not') == 'false'
+	if: contains(steps.find_arun.outputs, 'not') == 'false'
 	run: exit 0
