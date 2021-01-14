@@ -25,7 +25,7 @@ jobs:
         run: |
           set +e
           a=`head -1 $GITHUB_WORKSPACE/Jenkinsfile | grep arun | wc -l`
-          if [ $a -ne 1 ]; then echo "not found"; echo ::set-output name=exit_status::success; else echo "found"; echo ::set-output name=exit_status::failure; fi
+          if [ $a -ne 1 ]; then echo "not found"; echo ::set-output name=exit_status::1; else echo "found"; echo ::set-output name=exit_status::0; fi
         id: find_arun
       - name: error code
         if: steps.find_arun.outputs.exit_status  !=0
