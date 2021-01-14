@@ -31,5 +31,6 @@ jobs:
         run: exit 1
 
       - name: error code positive
+        
         if: contains(steps.find_arun.outputs, 'not') == 'false'
         run: exit 0
